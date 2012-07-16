@@ -1,13 +1,13 @@
 
 var extend = function (target, src) {
     //Only deals with objects. If terrible things happen..../shrug
+	//src overwrites keys in target
 	
 	for (var key in src) {
 		if (!src.hasOwnProperty(key)) continue;
 		
-		if (!target[key]) {
-			target[key] = src[key];
-		}
+		target[key] = src[key];
+		
 	}
 
     // Return the modified object
@@ -15,6 +15,7 @@ var extend = function (target, src) {
 }
 
 var Log = function ( options ) {
+	options = options || {};
 	
 	options = extend({
 		logState : 'none',
@@ -27,6 +28,8 @@ var Log = function ( options ) {
 		
 	}, options);
 	
+	
+	console.dir();
 	// @private
 	// @string state
 	var levelIndex = function (state) {
